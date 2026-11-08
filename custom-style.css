@@ -1,0 +1,44 @@
+/* custom-style.css: Жеке стильдер файлы */
+
+body {
+    background: #181818;
+    color: #e0e0e0;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.circle-custom {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: #222;
+    box-shadow: 0 0 40px 10px #2196f3;
+    position: relative;
+    margin: 60px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-custom img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    box-shadow: 0 0 30px 5px #2196f3;
+}
+
+@media (max-width: 600px) {
+    .circle-custom {
+        width: 220px;
+        height: 220px;
+    }
+    .circle-custom img {
+        width: 90%;
+        height: 90%;
+        top: 5%;
+        left: 5%;
+    }
+}

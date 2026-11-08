@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marvel әлемі - супергерой фильмдері мен кейіпкерлері туралы ақпарат.">
+    <meta name="author" content="Ermek.M">
+    <meta name="keywords" content="Marvel, супергерой, фильмдер, фильм  ақпарат, кейіпкерлер ,марвел кейыпкерлер ,фильмы">
+    <title>Marvel - Супергерой әлемі</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap");
+
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+.hours{
+    font-size: 20px;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: 
+        linear-gradient(135deg, rgba(12, 12, 12, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%),
+        url('https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat fixed;
+    color: #ffffff;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 0 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    color: #f5f5f7;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 15px;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ff6b6b;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 50px 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 50px;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #cccccc;
+}
+
+.hero-description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #999999;
+    margin-bottom: 35px;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    background: rgba(255, 107, 107, 0.1);
+    border: 2px solid #ff6b6b;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ff6b6b;
+    transition: all 0.4s ease;
+    margin-top: 25px;
+}
+
+.btn:hover {
+    background: #ff6b6b;
+    color: #ffffff;
+    box-shadow: 0 0 25px rgba(255, 107, 107, 0.5);
+    transform: translateY(-2px);
+}
+
+.circle-3d {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    flex-shrink: 0;
+}
+
+.circle-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s ease;
+    cursor: pointer;
+    border-radius: 30px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.circle-content:hover {
+    transform: rotateY(10deg) rotateX(5deg) translateZ(30px);
+}
+
+.circle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 28px;
+}
+
+.circle-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 28px;
+    transition: transform 0.6s ease;
+}
+
+.circle-content:hover .circle-video {
+    transform: scale(1.05);
+}
+
+.movies-section {
+    padding: 80px 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-header p {
+    font-size: 16px;
+    color: #999999;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 36px;
+    perspective: 2500px;
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.wrapper {
+    transition: all 0.5s;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card:hover .wrapper {
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+
+.cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.wrapper::before,
+.wrapper::after {
+    content: "";
+    opacity: 0;
+    width: 100%;
+    height: 80px;
+    transition: all 0.5s;
+    position: absolute;
+    left: 0;
+    border-radius: 15px;
+}
+
+.wrapper::before {
+    top: 0;
+    height: 100%;
+    background-image: linear-gradient(
+        to top,
+        transparent 46%,
+        rgba(12, 13, 19, 0.5) 68%,
+        rgba(12, 13, 19) 97%
+    );
+}
+
+.wrapper::after {
+    bottom: 0;
+    opacity: 1;
+    background-image: linear-gradient(
+        to bottom,
+        transparent 46%,
+        rgba(12, 13, 19, 0.5) 68%,
+        rgba(12, 13, 19) 97%
+    );
+}
+
+.card:hover .wrapper::before,
+.wrapper::after {
+    opacity: 1;
+}
+
+.card:hover .wrapper::after {
+    height: 120px;
+}
+
+/* Кейіпкер суреті - сіздің мысалыңыздағы дәл сондай */
+.character {
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    position: absolute;
+    z-index: -1;
+}
+
+.card:hover .character {
+    opacity: 1;
+    transform: translate3d(0%, -30%, 100px);
+}
+
+.title {
+    width: 100%;
+    transition: transform 0.5s;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.card:hover .title {
+    transform: translate3d(0%, -50px, 100px);
+}
+
+.title h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.title p {
+    font-size: 12px;
+    color: #cccccc;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 80px 20px 40px;
+    }
+    
+    .circle-3d {
+        width: 200px;
+        height: 270px;
+    }
+    
+    .menu {
+        display: none;
+    }
+    
+    .cards {
+        gap: 20px;
+    }
+    
+    .card {
+        width: 200px;
+        height: 300px;
+    }
+    
+    .character {
+        width: 45px;
+        height: 45px;
+        top: 10px;
+        right: 10px;
+    }
+}
+
+
+/* сайт томенгы жагы */
+.about-section {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 80px 50px;
+    max-width: 1400px;
+    margin: 0 auto 50px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+
+.about-section h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-align: center;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.about-section p {
+    font-size: 16px;
+    color: #999999;
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.movie-item {/* Фильм элементі */
+    margin-bottom: 40px; /* Төменгі аралық */
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.movie-item:hover {/* Фильм элементіне hover әсері */
+    background: rgba(255, 255, 255, 0.08);/* Фон түсі */
+    transform: translateY(-5px);/* Жоғары жылжу */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);/* Көлеңке */
+}
+
+.movie-text {/* Мәтіндік ақпарат контейнері */
+    flex: 1;/* Толық ені */
+    padding-right: 20px;/* Оң жақтағы аралық */
+}
+
+.movie-text h3 {/* Фильм атауы */
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4); /* Градиент текст */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.movie-text p { /* Сипаттама */
+    font-size: 16px;
+    line-height: 1.6;/* Жол аралығы */
+    color: #cccccc;/* Түс */
+    margin-bottom: 15px;
+}
+.year {
+    display: inline-block; /* Жыл белгісі */
+    background: rgba(255, 107, 107, 0.2); /* Жыл белгісі фоны */
+    color: #ff6b6b; /* Жыл белгісі түсі */
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.movie-video {   /* Видео контейнері */
+    width: 400px;
+    height: 225px;
+    border-radius: 15px; /* Жұмсақ бұрыштар */
+    overflow: hidden; /* Видео сыртқа шықпау үшін */
+    flex-shrink: 0; /* Фиксированная ширина */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.movie-video iframe { 
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.hours{
+    font-size: 20px;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 10px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">⚡ Marvel</div>
+            
+             <div id="clock" class="hours">--:--:--</div><!-- сагат сайт басындагы -->
+
+  <script>// Жай сағат функциясы жава 
+    setInterval(() => {
+      const now = new Date();
+      const time = now.toLocaleTimeString();
+      document.getElementById("clock").innerText = time;
+    }, 1000);
+  </script>
+
+            <div class="menu">
+                <a href="#home">Басты бет</a>
+                <a href="#movies">Фильмдер</a>
+                <a href="#about">Марвел туралы</a>
+            </div>
+        </nav>
+    </header>
+    <!-- сайт басы сол жак  -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Marvel </h1>
+            <h2 class="hero-subtitle">МСТИТЕЛИ</h2>
+            <p class="hero-description">
+                Ең керемет супергерой фильмдері мен олардың тамаша оқиғалары. 
+                Marvel әлеміндегі барлық кейіпкерлермен танысыңыз.
+                Marvel фильмдері - бұл тек фильмдер ғана емес, бұл мәдени феномен.
+            </p>
+            
+            <a href="#movies" class="btn">Marvel</a> <!--  марвел кнопка басса кызыл тус болады -->
+        </div>
+        
+        <div class="circle-3d">
+            <div class="circle-content">
+                <video class="circle-video" autoplay muted loop>
+                    <source src=""  type="video/mp4">
+                    <source src="/AQP3PWvCKYX33p8vF8TD6gKfLGzPBE2S_qsEgLFQ8_CtWCirM_H9gmFHqtqsVPu.mp4" type="video/mp4">
+                    Сіздің браузеріңіз видеоны қолдамайды.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section id="movies" class="movies-section">
+        <div class="section-header">
+            <h2>Marvel фильмдері</h2>
+            <p>Ең танымал супергерой фильмдері</p>
+        </div>
+        
+        <div class="cards">
+            <!-- 3D фото карточкалары - сіздің жергілікті суреттеріңізбен -->
+            <div class="card">
+                <div class="wrapper">
+                    <!-- Негізгі фон суреті -->
+                    <img src="/желез чел.jpg" alt="Iron Man" class="cover-image">
+                </div>
+                <!-- Кейіпкер суреті - 3D эффект үшін -->
+                <img src="/iron man.jpg" alt="Iron Man Character" class="character">
+                <div class="title">
+                    <h3>Iron Man</h3>
+                    <p>Экшн • 2008</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/америка.jpg" alt="Captain America" class="cover-image">
+                </div>
+                <img src="/capitan.jpg"   alt="Captain America Character" class="character">
+                <div class="title">
+                    <h3>Capitan America</h3>
+                    <p>Экшн • 2011</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="wrapper">
+                    <img src="halk.jpg" alt="Hulk" class="cover-image">
+                </div>
+                <img src="/halk film.jpg  " alt="Hulk Character" class="character">
+                <div class="title">
+                    <h3>Hulk</h3>
+                    <p>Экшн • 2008</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/тор.jpg" alt="Thor" class="cover-image">
+                </div>
+                <img src="/tho.jpg  " alt="Thor Character" class="character">
+                <div class="title">
+                    <h3>Thor</h3>
+                    <p>Экшн • 2024</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/final.jpg" alt="Avengers" class="cover-image">
+                </div>
+                <img src="/2019.jpg" alt="Avengers Character" class="character">
+                <div class="title">
+                    <h3>Endgame</h3>
+                    <p>Экшн • 2019</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/паук.jpg" alt="Spider-Man" class="cover-image">
+                </div>
+                <img src="/spider.jpg  " alt="Spider-Man Character" class="character">
+                <div class="title">
+                    <h3>Spider-Man</h3>
+                    <p>Экшн • 2022</p>
+                </div>
+            </div>
+             <div class="card">
+                <div class="wrapper">
+                    <img src="/what if.jpg" alt="Spider-Man" class="cover-image">
+                </div>
+                <img src="/what.jpg  " alt="Spider-Man Character" class="character">
+                <div class="title">
+                    <h3>What's it?</h3>
+                    <p>Экшн • 2023</p>
+                </div>
+            </div>
+            
+             <div class="card">
+                <div class="wrapper">
+                    <img src="/dc.jpg" alt="Spider-Man" class="cover-image">
+                </div>
+                <img src="/doom.jpg   " alt="Spider-Man Character" class="character">
+                <div class="title">
+                    <h3>dc.doom</h3>
+                    <p>Экшн • 2026</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/galaxy1.jpg" alt="Spider-Man" class="cover-image">
+                </div>
+                <img src="/galaxy2.jpg  " alt="Spider-Man Character" class="character">
+                <div class="title">
+                    <h3>Guardians of the Galaxy Vol.3</h3>
+                    <p>Экшн • 2023</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/capi iron.jpg" alt="Spider-Man" class="cover-image">
+                </div>
+                <img src="/cap iron 2.jpg " alt="Spider-Man Character" class="character">
+                <div class="title">
+                    <h3>Captain America: Civil War</h3>
+                    <p>Экшн • 2016</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/shan shi1.jpg" alt="Spider-Man" class="cover-image">
+                </div>
+                <img src="/shan shi2.jpg  " alt="Spider-Man Character" class="character">
+                <div class="title">
+                    <h3>Shang-Chi and the Legend of the Ten Rings</h3>
+                    <p>Экшн • 2021</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/doctor.jpg" alt="Spider-Man" class="cover-image">
+                </div>
+                <img src="/doctor2.jpg " alt="Spider-Man Character" class="character">
+                <div class="title">
+                    <h3>Doctor Strange in the Multiverse of Madness</h3>
+                    <p>Экшн • 2022</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/deadbul1.jpg" alt="Spider-Man" class="cover-image">
+                </div>
+                <img src="/dedbul2.jpg  " alt="Spider-Man Character" class="character">
+                <div class="title">
+                    <h3> Deadpool and Wolverine</h3>
+                    <p>Экшн • 2024</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/panter1.jpg" alt="Spider-Man" class="cover-image">
+                </div>
+                <img src="/panter2.jpg " alt="Spider-Man Character" class="character">
+                <div class="title">
+                    <h3>Black Panther</h3>
+                    <p>Экшн • 2018</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/black.jpg" alt="Spider-Man" class="cover-image">
+                </div>
+                <img src="/black2.jpg  " alt="Spider-Man Character" class="character">
+                <div class="title">
+                    <h3>Black Widow</h3>
+                    <p>Экшн • 2021</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/ant.jpg" alt="Spider-Man" class="cover-image">
+                </div>
+                <img src="/ant2.jpg  " alt="Spider-Man Character" class="character">
+                <div class="title">
+                    <h3>Ant-Man</h3>
+                    <p>Экшн • 2015</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- трейлер болымы -->
+            <div class="movie-item">
+                <div class="movie-text">
+                    <h3>Iron Man</h3>
+                    <p>Тони Старк - миллиардер, изобретатель и филантроп. После того как он попадает в плен к террористам, он создает мощную броню, чтобы сбежать. Вернувшись домой, он совершенствует костюм и использует его для борьбы с преступностью как Железный человек.</p>
+                    <span class="year">2008 • Экшн</span>
+                </div>
+                <div class="movie-video">
+                    <iframe src="https://www.youtube.com/embed/8ugaeA-nMTc" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="movie-item">
+                <div class="movie-text">
+                    <h3>Avengers:Endgame</h3>
+                    <p>после того, как Танос, межгалактический военачальник, дезинтегрирует половину вселенной, Мстители должны воссоединиться и собраться снова, чтобы оживить своих избитых союзников и восстановить равновесие.</p>
+                    <span class="year">2019 • Экшн</span>
+                </div>
+                <div class="movie-video">
+                    <iframe  src="https://www.youtube.com/embed/QPRtU7EqQy0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="movie-item">
+                <div class="movie-text">
+                    <h3>Avengers:5 Dc.Doom</h3>
+                    <p>В 2026 году выйдут фильма Marvel: «Мстители: Судный день» (18 декабря 2026 года) от Marvel Studios .</p>
+                    <span class="year">2026-2027 • Экшн</span>
+                </div>
+                <div class="movie-video">
+                    <iframe  src="/doom.jpg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+              <div class="movie-item">
+  <div class="movie-text">
+    <h3>What's if?</h3>
+    <p>«Что, если...?» — американский анимационный телесериал-антология, созданный AC Bradley для потокового сервиса Disney+, основанный на одноимённой серии комиксов Marvel Comics.</p>
+    <span class="year">2025 • Экшн</span>
+  </div>
+  <div class="movie-video">
+    <iframe width="560" height="315"
+      src="https://www.youtube.com/embed/twHYF506-9Y"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+    <section id="about" class="about-section">
+        <div class="section-header">
+            <h2>Мазмұн</h2>
+            <p>Marvel Киновеселеная</p>
+        </div>
+        <div class="about-content">
+            <p>
+                Marvel - бұл супергеройлар мен олардың эпикалық оқиғаларының әлемі. 
+                Біз сізге ең танымал фильмдер, кейіпкерлер және қызықты фактілер туралы ақпарат береміз.
+            </p>
+            <p>
+                Марвел әлемі 2019 жылы "Мстители: Финал" фильмімен үлкен жетістікке жетті, бұл фильм бүкіл әлем бойынша 2,798 миллиард доллардан астам табыс әкелді. Бұл Marvel Cinematic Universe (MCU) тарихындағы ең табысты фильм болып табылады.
+                БІРАҚ Марвел Тони старк өлгенсоң Кино алемы сәл төмендеп кетті енды 2026 жылдан бастан жана ЭПОХА басталады 
+            </p>
+        </div>
+
+     <footer>
+        <p>© 2025 Барлық құқықтар қорғалған</p>
+        <p>
+            <a href="mailto:admin@gmail.com"><button>button</button></a>
+        </p>
+     </footer>
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 100) {
+        header.style.background = 'rgba(0, 0, 0, 0.98)';
+    } else {
+        header.style.background = 'rgba(0, 0, 0, 0.95)';
+    }
+});
+
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 8;
+        const rotateY = (centerX - x) / 8;
+        
+        const wrapper = card.querySelector('.wrapper');
+        wrapper.style.transform = 
+            `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        const wrapper = card.querySelector('.wrapper');
+        wrapper.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+    });
+});
+
+console.log('Marvel сайты дайын! ⚡');
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
